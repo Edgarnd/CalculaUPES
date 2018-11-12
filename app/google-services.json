@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "112908026432",
+    "firebase_url": "https://calcula-upes.firebaseio.com",
+    "project_id": "calcula-upes",
+    "storage_bucket": "calcula-upes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112908026432:android:f20fbda47e8ae642",
+        "android_client_info": {
+          "package_name": "com.example.edgar.calculadoradenotas_upes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112908026432-6ip4r8618v0v2jqt1gbmbgmd5jgsfmj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARn4TJdigo7zDTNXmePMMRBO14KDYNmnE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

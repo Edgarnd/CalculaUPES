@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Calcula UPES</string>
+    <string name="welcome_String">BIENVENIDO/A</string>
+    <string name="cr_Insta_String">Creator Instagram</string>
+    <string name="fb_Insta_String">Creator Facebook</string>
+    <string name="cr_String">Creador</string>
+    <string name="dev_String">Edgar Renderos</string>
+    <string name="nets_String">Redes Sociales</string>
+    <string name="close_String">Cerrar</string>
+    <string name="signUp_String">Registrar Materia</string>
+    <string name="subjects_String">Materias Registradas</string>
+    <string name="update_String">Actualizar Lista</string>
+    <string name="logUpes2018">logo_UPES2018</string>
+    <string name="grade1_String">Registro 1</string>
+    <string name="grade2_String">Registro 2</string>
+    <string name="grade3_String">Registro 3</string>
+    <string name="nameSubject_String">Nombre de la Materia</string>
+    <string name="notice_String">Debe obtener 6 en cada uno de los registros, para aprobar.</string>
+    <string name="result_String">Promedio final</string>
+    <string name="register_String">Registrar</string>
+    <string name="search_String">Buscar</string>
+    <string name="inf_String">Mas Inf</string>
+    <string name="evaluate_String">Evaluar</string>
+    <string name="logUpesback_String">logo_UPESrgba2018</string>
+    <string name="year_created_string">UPES 2018©</string>
+    <string name="text_final_string">Hasta completas los 3 registros</string>
+</resources>
