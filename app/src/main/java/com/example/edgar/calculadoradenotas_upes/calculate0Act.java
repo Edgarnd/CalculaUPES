@@ -67,7 +67,7 @@ public class calculate0Act extends AppCompatActivity {
             vwtxt0.setText("");
             Cursor check = db.rawQuery("SELECT namemateria FROM Notas", null);
             int amount = check.getCount();
-            if(amount == 6){
+            if(amount >= 6){
                 txt_view_result.setText("");
                 vwtxt0.setText("");
                 Toast.makeText(this, "No puede registrar esta materia", Toast.LENGTH_SHORT).show();

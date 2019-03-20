@@ -32,6 +32,9 @@ public class selectSubjectAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subject);
+        ll_botones = (LinearLayout)findViewById(R.id.layout_bots_materias);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
 
         /*
         broadcastReceiver = new BroadcastReceiver() {
@@ -57,39 +60,55 @@ public class selectSubjectAct extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"admin",null,1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
-        Cursor check = db.rawQuery("SELECT id_mat FROM Notas", null);
-        int amount = check.getCount();
+        Cursor check = db.rawQuery("SELECT namemateria FROM Notas", null);
+        if(check.moveToLast()){
+            final String ultima_materia = check.getString(0);
+            int limite_ultima_materia = check.getPosition();
+            check.moveToFirst();
+            String primera_materia = check.getString(0);
+            int limite_primera_materia = check.getPosition();
 
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        ll_botones = (LinearLayout)findViewById(R.id.layout_bots_materias);
-
-        //HERE FOR ONE SUBJECTS
-        if(amount > 0 && amount <= 6){
-            for(int i = 1; i <= amount; i++){
-                final Button bot_materia = new Button(this);
-                final Cursor row_materia = db.rawQuery("SELECT namemateria FROM Notas WHERE id_mat = ?",
-                        new String[]{String.valueOf(i)});
-                if(row_materia.moveToFirst()){
-                    bot_materia.setText(row_materia.getString(0));
+            if (ultima_materia.equals(primera_materia)){
+                Button bot_materia = new Button(this);
+                bot_materia.setText(ultima_materia);
+                bot_materia.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                bot_materia.setTextColor(getResources().getColor(R.color.colorAccent));
+                bot_materia.setLayoutParams(lp);
+                bot_materia.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent goMateria = new Intent(selectSubjectAct.this, calculate0Act.class);
+                        goMateria.putExtra("materia", ultima_materia);
+                        startActivity(goMateria);
+                    }
+                });
+                ll_botones.addView(bot_materia);
+            } else {
+                for(int i = limite_primera_materia; i <= limite_ultima_materia; i++){
+                    final Button bot_materia = new Button(this);
+                    bot_materia.setText(check.getString(0));
                     bot_materia.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                    bot_materia.setTextColor(getResources().getColor(R.color.colorAccent));
+                    bot_materia.setLayoutParams(lp);
                     bot_materia.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent sub0 = new Intent(selectSubjectAct.this, calculate0Act.class);
-                            sub0.putExtra("materia", bot_materia.getText().toString());
-                            startActivity(sub0);
+                            Intent goMateria = new Intent(selectSubjectAct.this, calculate0Act.class);
+                            goMateria.putExtra("materia", bot_materia.getText().toString());
+                            startActivity(goMateria);
                         }
                     });
-                    bot_materia.setTextColor(getResources().getColor(R.color.colorAccent));
                     ll_botones.addView(bot_materia);
+                    check.moveToNext();
                 }
             }
+
+            //Toast.makeText(this, "Integer " + limite_primera_materia + " otra " + limite_ultima_materia, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "No hay materias registradas aun.", Toast.LENGTH_SHORT).show();
 
         }
+
     }
 
     /*
